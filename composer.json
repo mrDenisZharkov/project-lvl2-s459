@@ -1,5 +1,5 @@
 {
-    "name": "zharkov-denis/brain-games",
+    "name": "zharkov-denis/gendiff",
     "bin": [
     "bin/gendiff"
     ],
