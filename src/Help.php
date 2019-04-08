@@ -15,4 +15,3 @@ DOC;
 
     $result = \Docopt::handle($doc);
 }
-
