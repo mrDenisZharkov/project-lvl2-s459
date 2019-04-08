@@ -1,0 +1,27 @@
+{
+    "name": "zharkov-denis/brain-games",
+    "bin": [
+    ],
+    "description": "differencies generator",
+    "keywords": ["difference", "generator", "hexlet", "project"],
+    "type": "project",
+    "authors": [
+        {
+            "name": "Zharkov Denis",
+            "email": "zdu.ing@gmail.com"
+        }
+    ],
+    "scripts": {
+        "phpcs": "phpcs"
+    },
+    "autoload": {
+        "files": [
+         ]
+    },
+    "require": {
+        "docopt/docopt": "^1.0"
+    },
+    "require-dev": {
+		"squizlabs/php_codesniffer": "3.3.2"
+    }
+}
