@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit9237d5e9d1f3bfe42d20471102eb0b44
 {
+    public static $files = array (
+        '369c63651f506445f9b592433ba9dfcc' => __DIR__ . '/../..' . '/src/Cli.php',
+    );
+
     public static $classMap = array (
         'Docopt' => __DIR__ . '/..' . '/docopt/docopt/src/docopt.php',
         'Docopt\\Argument' => __DIR__ . '/..' . '/docopt/docopt/src/docopt.php',

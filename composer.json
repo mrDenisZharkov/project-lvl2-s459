@@ -1,6 +1,7 @@
 {
     "name": "zharkov-denis/brain-games",
     "bin": [
+    "bin/gendiff"
     ],
     "description": "differencies generator",
     "keywords": ["difference", "generator", "hexlet", "project"],
@@ -16,6 +17,7 @@
     },
     "autoload": {
         "files": [
+        "src/Cli.php"
          ]
     },
     "require": {
