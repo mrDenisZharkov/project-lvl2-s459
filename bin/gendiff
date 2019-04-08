@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use function gendiff\Cli\run;
+use function gendiff\Help\run;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
