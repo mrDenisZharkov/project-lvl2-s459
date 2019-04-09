@@ -16,12 +16,9 @@
         "phpcs": "phpcs"
     },
     "autoload": {
-		"psr-4": {
-            "gendiff\\": "src"
-        },
         "files": [
             "src/Help.php"
-         ]
+        ]
     },
     "require": {
 		"docopt/docopt": "1.0.2"
