@@ -1,5 +1,5 @@
 <?php
-namespace gendiff\Help;
+namespace gendiff;
 
 function run()
 {

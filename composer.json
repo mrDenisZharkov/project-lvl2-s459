@@ -1,10 +1,7 @@
 {
-    "name": "zharkov-denis/gendiff",
-    "bin": [
-    "bin/gendiff"
-    ],
+    "name": "denis-zharkov/gendiff",
     "description": "differencies generator",
-    "keywords": ["difference", "generator", "hexlet", "project"],
+    "keywords": ["braingames", "hexlet", "project"],
     "type": "project",
     "authors": [
         {
@@ -12,18 +9,24 @@
             "email": "zdu.ing@gmail.com"
         }
     ],
+    "bin": [
+    "bin/gendiff"
+    ],
     "scripts": {
         "phpcs": "phpcs"
     },
     "autoload": {
+		"psr-4": {
+      "gendiff\\": "src"
+    },
         "files": [
         "src/Help.php"
          ]
     },
     "require": {
-        "docopt/docopt": "1.0.2"
-    },
-    "require-dev": {
+		"docopt/docopt": "1.0.2"
+	},
+	"require-dev": {
 		"squizlabs/php_codesniffer": "3.3.2"
     }
 }

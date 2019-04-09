@@ -7,7 +7,21 @@ namespace Composer\Autoload;
 class ComposerStaticInit9237d5e9d1f3bfe42d20471102eb0b44
 {
     public static $files = array (
-        '21efe999052daf60a2cb3151f304bf87' => __DIR__ . '/../..' . '/src/Help.php',
+        '4ce8053d5de5bb076c50870f996cf5d9' => __DIR__ . '/../..' . '/src/Help.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'g' => 
+        array (
+            'gendiff\\' => 8,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'gendiff\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
     );
 
     public static $classMap = array (
@@ -33,6 +47,8 @@ class ComposerStaticInit9237d5e9d1f3bfe42d20471102eb0b44
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9237d5e9d1f3bfe42d20471102eb0b44::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9237d5e9d1f3bfe42d20471102eb0b44::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit9237d5e9d1f3bfe42d20471102eb0b44::$classMap;
 
         }, null, ClassLoader::class);
