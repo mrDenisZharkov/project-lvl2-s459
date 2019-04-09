@@ -2,7 +2,7 @@
     "name": "zharkov-denis/gendiff",
     "description": "differencies generator",
     "keywords": ["braingames", "hexlet", "project"],
-    "type": "project",
+    "type": "library",
     "authors": [
         {
             "name": "Zharkov Denis",
@@ -10,17 +10,17 @@
         }
     ],
     "bin": [
-    "bin/gendiff"
+        "bin/gendiff"
     ],
     "scripts": {
         "phpcs": "phpcs"
     },
     "autoload": {
 		"psr-4": {
-      "gendiff\\": "src"
-    },
+            "gendiff\\": "src"
+        },
         "files": [
-        "src/Help.php"
+            "src/Help.php"
          ]
     },
     "require": {
