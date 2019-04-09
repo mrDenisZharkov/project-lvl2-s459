@@ -10,3 +10,10 @@ For global installation:
 composer global require zharkov-denis/gendiff
 ```
 [![asciicast](https://asciinema.org/a/ByoczopCXiS1URRgVv4ZGrGu5.svg)](https://asciinema.org/a/ByoczopCXiS1URRgVv4ZGrGu5)
+## Call help:
+```
+gendiff -h
+or
+gendiff -help
+```
+[![asciicast](https://asciinema.org/a/tcwSXSyt3AJrF6I4DKDh6VMwZ.svg)](https://asciinema.org/a/tcwSXSyt3AJrF6I4DKDh6VMwZ)
