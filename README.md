@@ -17,3 +17,8 @@ or
 gendiff -help
 ```
 [![asciicast](https://asciinema.org/a/tcwSXSyt3AJrF6I4DKDh6VMwZ.svg)](https://asciinema.org/a/tcwSXSyt3AJrF6I4DKDh6VMwZ)
+## Call json files to see difference:
+```
+gendiff before.json after.json
+```
+[![asciicast](https://asciinema.org/a/bm1nQVVY0u8xq6fynKBf3CASx.svg)](https://asciinema.org/a/bm1nQVVY0u8xq6fynKBf3CASx)
