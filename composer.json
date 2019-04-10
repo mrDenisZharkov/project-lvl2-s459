@@ -13,17 +13,26 @@
         "bin/gendiff"
     ],
     "scripts": {
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
     },
     "autoload": {
         "files": [
-            "src/Help.php"
-        ]
+            "src/Cli.php",
+            "src/genDiff.php"
+        ],
+        "psr-4": {
+            "gendiff\\Tests\\": "tests/"
+        }
     },
     "require": {
-		"docopt/docopt": "1.0.2"
+		"docopt/docopt": "1.0.2",
+        "funct/funct": "1.5"
 	},
 	"require-dev": {
-		"squizlabs/php_codesniffer": "3.3.2"
+		"squizlabs/php_codesniffer": "3.3.2",
+        "phpunit/phpunit": "8"
     }
 }
