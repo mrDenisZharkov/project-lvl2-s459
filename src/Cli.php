@@ -21,7 +21,7 @@ function run()
 {
     $result = \Docopt::handle(genHelp());
     echo genDiff(
-		json_decode(file_get_contents($result['<firstFile>']), true),
-		json_decode(file_get_contents($result['<secondFile>']), true)
-		);
+        json_decode(file_get_contents($result['<firstFile>']), true),
+        json_decode(file_get_contents($result['<secondFile>']), true)
+    );
 }

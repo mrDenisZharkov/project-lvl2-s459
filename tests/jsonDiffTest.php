@@ -14,7 +14,8 @@ class jsonDiffTest extends TestCase
   - timeout: 50
   + timeout: 20
   - proxy: 123.234.53.22
-  + verbose: 1";
+  + verbose: 1
+";
         $tested= genDiff(
 		json_decode(file_get_contents($firstFilePath), true),
 		json_decode(file_get_contents($secondFilePath), true)
