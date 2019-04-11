@@ -9,5 +9,3 @@ script:
   - make lint
   - make test
 
-after_script:
-  - vendor/bin/test-reporter
