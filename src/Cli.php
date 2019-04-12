@@ -2,7 +2,7 @@
 namespace gendiff\Cli;
 use function gendiff\genDiff\genDiff;
 
-function genHelp()
+function genCli()
 {
     $help = <<<DOC
 Generate diff
@@ -19,9 +19,9 @@ DOC;
 
 function run()
 {
-    $result = \Docopt::handle(genHelp());
-    echo genDiff(
-        json_decode(file_get_contents($result['<firstFile>']), true),
-        json_decode(file_get_contents($result['<secondFile>']), true)
-    );
+    $files = \Docopt::handle(genCli());
+    $beforeFile = $files['<firstFile>'];
+    $afterFile = $files['<secondFile>'];
+    echo genDiff($beforeFile, $afterFile);
 }
+

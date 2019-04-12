@@ -1,38 +1,50 @@
 <?php
 namespace gendiff\genDiff;
 
-function genDiff(array $firstData, array $secondData)
+use function Funct\Collection\union;
+
+function genDiff($beforeFile, $afterFile)
 {
-    $addedInd = '+';
+    $beforeData = getFileData($beforeFile);
+    $afterData = getFileData($afterFile);
+    $keys = union(array_keys($beforeData), array_keys($afterData));
+    $result = array_reduce($keys, function ($string, $key) use ($beforeData, $afterData) {
+            return $string . getDiffStr($key, $beforeData, $afterData);
+            }, '');
+    return '{' . PHP_EOL . $result . '}' . PHP_EOL;
+ }  
+  
+function getFileData($path)
+{
+	return json_decode(file_get_contents($path), true);
+}
+
+ function getDiffStr($key, $beforeData, $afterData)
+ {
+	$addedInd = '+';
     $deletedInd = '-';
     $equalInd = ' ';
-    $result = '';
-    foreach ($firstData as $key => $value) {
-        if (array_key_exists($key, $secondData)) {
-            if (isEqual($key, $value, $secondData)) {
-                $newStr = getLine($equalInd, $key, $value);
-            } else {
-                $strOne = getLine($deletedInd, $key, $value);
-                $strTwo = getLine($addedInd, $key, $secondData[$key]);
-                $newStr = "{$strOne}{$strTwo}";
-            }
-            unset($secondData[$key]);
-        } else {
-            $newStr = getLine($deletedInd, $key, $value);
-        }
-        $result = "{$result}{$newStr}";
-    }
-    foreach ($secondData as $key => $value) {
-        $newStr = getLine($addedInd, $key, $secondData[$key]);
-        $result = "{$result}{$newStr}";
-    }
-    return $result;
+    $hasKeyBefore = array_key_exists($key, $beforeData);
+    $hasKeyAfter = array_key_exists($key, $afterData);
+    $valueBefore = !$hasKeyBefore ?: $beforeData[$key];
+    $valueAfter = !$hasKeyAfter ?: $afterData[$key];
+    if (!$hasKeyBefore && $hasKeyAfter) {
+        return getLine($addedInd, $key, $valueAfter);
+    } else  if ($hasKeyBefore && !$hasKeyAfter) {
+        return getLine($deletedInd, $key, $valueBefore);
+    } else if ($valueBefore === $valueAfter){
+        return getLine($equalInd, $key, $valueBefore);
+    } else {
+        return getLine($addedInd, $key, $valueAfter) . getLine($deletedInd, $key, $valueBefore);
+	}
 }
+
 function getLine($indicator, $key, $value)
 {
-    return "  {$indicator} {$key}: {$value}" . PHP_EOL;
+    return "  {$indicator} {$key}: " . normalizeValue($value) . PHP_EOL;
 }
-function isEqual($key, $value, array $data)
+
+function normalizeValue($value)
 {
-    return $data[$key] === $value;
+	return is_bool($value) ? ($value = $value ? 'true' : 'false') : $value;
 }
