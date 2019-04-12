@@ -10,18 +10,18 @@ function genDiff($beforeFile, $afterFile)
     $keys = union(array_keys($beforeData), array_keys($afterData));
     $result = array_reduce($keys, function ($string, $key) use ($beforeData, $afterData) {
             return $string . getDiffStr($key, $beforeData, $afterData);
-            }, '');
+    }, '');
     return '{' . PHP_EOL . $result . '}' . PHP_EOL;
- }  
+}
   
 function getFileData($path)
 {
-	return json_decode(file_get_contents($path), true);
+    return json_decode(file_get_contents($path), true);
 }
 
- function getDiffStr($key, $beforeData, $afterData)
- {
-	$addedInd = '+';
+function getDiffStr($key, $beforeData, $afterData)
+{
+    $addedInd = '+';
     $deletedInd = '-';
     $equalInd = ' ';
     $hasKeyBefore = array_key_exists($key, $beforeData);
@@ -30,13 +30,13 @@ function getFileData($path)
     $valueAfter = !$hasKeyAfter ?: $afterData[$key];
     if (!$hasKeyBefore && $hasKeyAfter) {
         return getLine($addedInd, $key, $valueAfter);
-    } else  if ($hasKeyBefore && !$hasKeyAfter) {
+    } elseif ($hasKeyBefore && !$hasKeyAfter) {
         return getLine($deletedInd, $key, $valueBefore);
-    } else if ($valueBefore === $valueAfter){
+    } elseif ($valueBefore === $valueAfter) {
         return getLine($equalInd, $key, $valueBefore);
     } else {
         return getLine($addedInd, $key, $valueAfter) . getLine($deletedInd, $key, $valueBefore);
-	}
+    }
 }
 
 function getLine($indicator, $key, $value)
@@ -46,5 +46,5 @@ function getLine($indicator, $key, $value)
 
 function normalizeValue($value)
 {
-	return is_bool($value) ? ($value = $value ? 'true' : 'false') : $value;
+    return is_bool($value) ? ($value = $value ? 'true' : 'false') : $value;
 }

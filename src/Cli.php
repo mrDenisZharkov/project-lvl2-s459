@@ -24,4 +24,3 @@ function run()
     $afterFile = $files['<secondFile>'];
     echo genDiff($beforeFile, $afterFile);
 }
-
