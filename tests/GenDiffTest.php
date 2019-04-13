@@ -4,24 +4,24 @@ namespace gendiff\Tests;
 use function gendiff\genDiff\genDiff;
 use PHPUnit\Framework\TestCase;
 
-class JsonDiffTest extends TestCase
+class DiffTest extends TestCase
 {
-    public function testJsonDiff()
+    public function testDiff()
     {
-        $beforeFilePath = __DIR__ . '/cases/json/before.json';
-        $afterFilePath = __DIR__ . '/cases/json/after.json';
-        $resultFilePath = __DIR__ . '/cases/json/result.txt';
-        $expected = file_get_contents($resultFilePath);
-        $tested = genDiff($beforeFilePath, $afterFilePath);
-        $this->assertEquals($tested, $expected);
-    }
-    public function testYamlDiff()
-    {
-        $beforeFilePath = __DIR__ . '/cases/yaml/before.yaml';
-        $afterFilePath = __DIR__ . '/cases/yaml/after.yaml';
-        $resultFilePath = __DIR__ . '/cases/yaml/result.txt';
-        $expected = file_get_contents($resultFilePath);
-        $tested = genDiff($beforeFilePath, $afterFilePath);
-        $this->assertEquals($tested, $expected);
+        $catalogCasesPath = __DIR__ . "/cases";
+        $filetypeDirectories = array_diff(scandir($catalogCasesPath), [".", ".."]);
+        foreach ($filetypeDirectories as $filetype) {
+            $catalogPath = "$catalogCasesPath/{$filetype}";
+            $testCases = array_diff(scandir($catalogPath), [".", ".."]);
+            foreach ($testCases as $i) {
+                $beforeFilePath = "{$catalogPath}/{$i}/before.{$filetype}";
+                $afterFilePath = "{$catalogPath}/{$i}/after.{$filetype}";
+                $resultFilePath = "{$catalogPath}/{$i}/result.txt";
+                print_r("check in {$catalogPath}/{$i}" . PHP_EOL);
+                $expected = file_get_contents($resultFilePath);
+                $tested = genDiff($beforeFilePath, $afterFilePath);
+                $this->assertEquals($tested, $expected);
+            }
+        }
     }
 }
