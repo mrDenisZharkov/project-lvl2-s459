@@ -22,3 +22,8 @@ gendiff -help
 gendiff *.json *.json
 ```
 [![asciicast](https://asciinema.org/a/TwDYw5KXTd4o2pmKti32CpPUF.svg)](https://asciinema.org/a/TwDYw5KXTd4o2pmKti32CpPUF)
+## Call yaml files to see difference:
+```
+gendiff *.yaml *.yaml
+```
+[![asciicast](https://asciinema.org/a/nKzNNYmdBGVyZpgu3SwalKMrx.svg)](https://asciinema.org/a/nKzNNYmdBGVyZpgu3SwalKMrx)
