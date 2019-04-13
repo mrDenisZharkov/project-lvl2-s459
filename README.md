@@ -17,7 +17,7 @@ or
 gendiff -help
 ```
 [![asciicast](https://asciinema.org/a/tcwSXSyt3AJrF6I4DKDh6VMwZ.svg)](https://asciinema.org/a/tcwSXSyt3AJrF6I4DKDh6VMwZ)
-## Call json files to see difference:
+## Call json flat files to see difference:
 ```
 gendiff *.json *.json
 ```
@@ -27,3 +27,8 @@ gendiff *.json *.json
 gendiff *.yaml *.yaml
 ```
 [![asciicast](https://asciinema.org/a/nKzNNYmdBGVyZpgu3SwalKMrx.svg)](https://asciinema.org/a/nKzNNYmdBGVyZpgu3SwalKMrx)
+## Call json non-flat files to see difference:
+```
+gendiff *.json *.json
+```
+[![asciicast](https://asciinema.org/a/OPhJeiONPHxWIwlBLK3k7V6y3.svg)](https://asciinema.org/a/OPhJeiONPHxWIwlBLK3k7V6y3)
