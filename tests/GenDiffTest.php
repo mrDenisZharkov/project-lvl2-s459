@@ -2,7 +2,6 @@
 namespace gendiff\Tests;
 
 use function gendiff\genDiff\genDiff;
-use function gendiff\Cli\getFileData;
 use PHPUnit\Framework\TestCase;
 
 class JsonDiffTest extends TestCase

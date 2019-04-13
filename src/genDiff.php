@@ -8,10 +8,12 @@ function genDiff($beforeFile, $afterFile)
     $beforeData = getFileData($beforeFile);
     $afterData = getFileData($afterFile);
     $keys = union(array_keys($beforeData), array_keys($afterData));
-    $result = array_reduce($keys, function ($string, $key) use ($beforeData, $afterData) {
-            return $string . getDiffStr($key, $beforeData, $afterData);
-    }, '');
-    return '{' . PHP_EOL . $result . '}' . PHP_EOL;
+    $diffResult = array_reduce($keys, function ($diffString, $key) use ($beforeData, $afterData) {
+        $diffString[] = getDiffStr($key, $beforeData, $afterData);
+        return $diffString;
+    }, []);
+    $diffBody = implode($diffResult);
+    return '{' . PHP_EOL . $diffBody . '}' . PHP_EOL;
 }
   
 function getFileData($path)
