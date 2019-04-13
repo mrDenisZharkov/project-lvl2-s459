@@ -12,8 +12,8 @@ function genDiff($beforeFile, $afterFile)
         $diffString[] = getDiffStr($key, $beforeData, $afterData);
         return $diffString;
     }, []);
-    $diffBody = implode($diffResult);
-    return '{' . PHP_EOL . $diffBody . '}' . PHP_EOL;
+    $diffBody = ['{', PHP_EOL, implode($diffResult), '}', PHP_EOL];
+    return implode($diffBody);
 }
   
 function getFileData($path)
