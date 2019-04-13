@@ -2,6 +2,7 @@
 namespace gendiff\genDiff;
 
 use function Funct\Collection\union;
+use Symfony\Component\Yaml\Yaml;
 
 function genDiff($beforeFile, $afterFile)
 {
@@ -18,7 +19,18 @@ function genDiff($beforeFile, $afterFile)
   
 function getFileData($path)
 {
-    return json_decode(file_get_contents($path), true);
+    $extension = pathinfo($path, PATHINFO_EXTENSION);
+    switch ($extension) {
+        case 'json':
+            return json_decode(file_get_contents($path), true);
+        break;
+        case 'yaml':
+            return Yaml::parse(file_get_contents($path));
+        break;
+        default:
+            return [];
+        break;
+    }
 }
 
 function getDiffStr($key, $beforeData, $afterData)
