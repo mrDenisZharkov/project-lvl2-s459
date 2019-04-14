@@ -13,26 +13,28 @@ function parseAstBody(array $ast, $path = '')
         $key = $astNode['key'];
         $beforeValue = $astNode['beforeValue'];
         $afterValue = $astNode['afterValue'];
-        $status = $astNode['type'];
+        $type = $astNode['type'];
         $children = $astNode['children'];
-        switch ($status) {
+        switch ($type) {
             case 'node':
                 $acc[] = parseAstBody($children, "{$key}.");
                 break;
             case 'changed':
                 $note = ". From '{$beforeValue}' to '{$afterValue}'";
-                $acc[] = getLine($path, $key, $status, $note);
+                $acc[] = getLine($path, $key, $type, $note);
                 break;
             case 'added':
                 $noteIfComplex =  " with value: 'complex value'";
                 $note = is_array($afterValue) ? $noteIfComplex : " with value: '{$afterValue}'";
-                $acc[] = getLine($path, $key, $status, $note);
+                $acc[] = getLine($path, $key, $type, $note);
                 break;
             case 'removed':
-                $acc[] = getLine($path, $key, $status);
+                $acc[] = getLine($path, $key, $type);
+                break;
+            case 'equal':
                 break;
             default:
-                break;
+                throw new \Exception('Unknown type for AST: ' . $type);
         }
         return $acc;
     }, []);
