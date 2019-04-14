@@ -32,3 +32,8 @@ gendiff *.yaml *.yaml
 gendiff *.json *.json
 ```
 [![asciicast](https://asciinema.org/a/OPhJeiONPHxWIwlBLK3k7V6y3.svg)](https://asciinema.org/a/OPhJeiONPHxWIwlBLK3k7V6y3)
+## Call files to see difference in plain format:
+```
+gendiff *.(json/yaml) *.(json/yaml) --format plain
+```
+[![asciicast](https://asciinema.org/a/yuE6f4igqf9HGhawdLYGGPgHz.svg)](https://asciinema.org/a/yuE6f4igqf9HGhawdLYGGPgHz)
