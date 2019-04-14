@@ -1,6 +1,6 @@
 <?php
 namespace gendiff\Cli;
-use function gendiff\genDiff\genDiff;
+use function gendiff\DiffMaker\genDiff;
 
 function genCli()
 {
@@ -22,5 +22,5 @@ function run()
     $files = \Docopt::handle(genCli());
     $beforeFile = $files['<firstFile>'];
     $afterFile = $files['<secondFile>'];
-    echo genDiff($beforeFile, $afterFile);
+    print_r(genDiff($beforeFile, $afterFile));
 }

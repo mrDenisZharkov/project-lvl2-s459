@@ -21,7 +21,9 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/genDiff.php"
+            "src/DiffMaker.php",
+            "src/Parser.php",
+            "src/Ast.php"
         ],
         "psr-4": {
             "gendiff\\Tests\\": "tests/"
