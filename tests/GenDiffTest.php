@@ -1,15 +1,15 @@
 <?php
 namespace gendiff\Tests;
 
-use function gendiff\DiffMaker\genDiff;
+use function gendiff\Cli\runGenDiff;
 use PHPUnit\Framework\TestCase;
 
 class DiffTest extends TestCase
 {
     public function testDiff()
     {
-        $converFormats = ['', 'plain'];
-        foreach ($converFormats as $converFormat) {
+        $convertFormats = ['', 'plain'];
+        foreach ($convertFormats as $convertFormat) {
             $catalogCasesPath = __DIR__ . "/cases";
             $filetypeDirectories = array_diff(scandir($catalogCasesPath), [".", ".."]);
             foreach ($filetypeDirectories as $filetype) {
@@ -18,10 +18,10 @@ class DiffTest extends TestCase
                 foreach ($testCases as $i) {
                     $beforeFilePath = "{$catalogPath}/{$i}/before.{$filetype}";
                     $afterFilePath = "{$catalogPath}/{$i}/after.{$filetype}";
-                    $resultFilePath = "{$catalogPath}/{$i}/result{$converFormat}.txt";
+                    $resultFilePath = "{$catalogPath}/{$i}/result{$convertFormat}.txt";
                     print_r("check in {$catalogPath}/{$i}" . PHP_EOL);
                     $expected = file_get_contents($resultFilePath);
-                    $tested = genDiff($beforeFilePath, $afterFilePath, $converFormat);
+                    $tested = runGenDiff($beforeFilePath, $afterFilePath, $convertFormat);
                     $this->assertEquals($tested, $expected);
                 }
             }

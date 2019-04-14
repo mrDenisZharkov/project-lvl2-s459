@@ -5,10 +5,10 @@ use function gendiff\Parser\parseFileData;
 use function gendiff\Ast\renderAst;
 use function gendiff\Converter\parseAst;
 
-function genDiff($beforeFile, $afterFile, $outputFormat)
+function genDiff($beforeData, $afterData, $inputFormat, $outputFormat)
 {
-    $beforeData = parseFileData($beforeFile);
-    $afterData = parseFileData($afterFile);
-    $ast = renderAst($beforeData, $afterData);
+    $beforeParsedData = parseFileData($beforeData, $inputFormat);
+    $afterParsedData = parseFileData($afterData, $inputFormat);
+    $ast = renderAst($beforeParsedData, $afterParsedData);
     return parseAst($ast, $outputFormat);
 }

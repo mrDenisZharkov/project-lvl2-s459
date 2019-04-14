@@ -3,18 +3,14 @@ namespace gendiff\Parser;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parseFileData($path)
+function parseFileData($data, $extension)
 {
-    $extension = pathinfo($path, PATHINFO_EXTENSION);
     switch ($extension) {
         case 'json':
-            return json_decode(file_get_contents($path), true);
-        break;
+            return json_decode($data, true);
         case 'yaml':
-            return Yaml::parse(file_get_contents($path));
-        break;
+            return Yaml::parse($data);
         default:
-            return ["Error. Unsupported file format"];
-        break;
+            throw new \Exception('Error. Unsupported file format');
     }
 }

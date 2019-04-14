@@ -23,5 +23,19 @@ function run()
     $beforeFile = $files['<firstFile>'];
     $afterFile = $files['<secondFile>'];
     $outputFormat = $files['--format'];
-    print_r(genDiff($beforeFile, $afterFile, $outputFormat));
+    print_r(runGenDiff($beforeFile, $afterFile, $outputFormat));
+}
+
+function runGenDiff($beforeFilePath, $afterFilePath, $outputFormat)
+{
+    $beforeData = file_get_contents($beforeFilePath);
+    $afterData = file_get_contents($afterFilePath);
+    $firstExtension = pathinfo($beforeFilePath, PATHINFO_EXTENSION);
+    $secondExtension = pathinfo($afterFilePath, PATHINFO_EXTENSION);
+    if ($firstExtension === $secondExtension) {
+        $inputFormat = $firstExtension;
+    } else {
+        throw new \Exception("Error. Different files format");
+    }
+    return genDiff($beforeData, $afterData, $inputFormat, $outputFormat);
 }
