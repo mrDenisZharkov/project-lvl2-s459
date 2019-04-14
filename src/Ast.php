@@ -3,26 +3,28 @@ namespace gendiff\Ast;
 
 use function Funct\Collection\union;
 
-function initNode($key, $status, $beforeValue, $afterValue, $children)
+function initNode($key, $type, $beforeValue, $afterValue, $children)
 {
     return [
         'key' => $key,
-        'status' => $status,
+        'type' => $type,
         'beforeValue' => $beforeValue,
         'afterValue' => $afterValue,
         'children' => $children
     ];
 }
 
-function renderAst($beforeData, $afterData)
+function parseAst($beforeData, $afterData)
 {
     $keys = union(array_keys($beforeData), array_keys($afterData));
     $ast = array_reduce($keys, function ($acc, $key) use ($beforeData, $afterData) {
-        $beforeValue = array_key_exists($key, $beforeData) ? normalizeValue($beforeData[$key]) : [];
-        $afterValue = array_key_exists($key, $afterData) ? normalizeValue($afterData[$key]) : [];
+        $beforeValue = $beforeData[$key] ?? '';
+        $afterValue = $afterData[$key] ?? '';
+        $beforeValue = normalizeValue($beforeValue);
+        $afterValue = normalizeValue($afterValue);
         if (array_key_exists($key, $beforeData) && array_key_exists($key, $afterData)) {
             if (is_array($beforeValue) && is_array($afterValue)) {
-                $acc[] = initNode($key, 'node', null, null, renderAst($beforeValue, $afterValue));
+                $acc[] = initNode($key, 'node', null, null, parseAst($beforeValue, $afterValue));
             } elseif ($beforeValue === $afterValue) {
                 $acc[] = initNode($key, 'equal', $beforeValue, $afterValue, null);
             } else {

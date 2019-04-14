@@ -1,5 +1,5 @@
 <?php
-namespace gendiff\converters\Plain;
+namespace gendiff\formatters\Plain;
 
 function parseAst($ast)
 {
@@ -13,7 +13,7 @@ function parseAstBody(array $ast, $path = '')
         $key = $astNode['key'];
         $beforeValue = $astNode['beforeValue'];
         $afterValue = $astNode['afterValue'];
-        $status = $astNode['status'];
+        $status = $astNode['type'];
         $children = $astNode['children'];
         switch ($status) {
             case 'node':

@@ -25,8 +25,8 @@
             "src/Parser.php",
             "src/Ast.php",
             "src/Converter.php",
-            "src/converters/Tree.php",
-            "src/converters/Plain.php"
+            "src/formatters/Tree.php",
+            "src/formatters/Plain.php"
         ],
         "psr-4": {
             "gendiff\\Tests\\": "tests/"

@@ -1,10 +1,10 @@
 <?php
 namespace gendiff\Converter;
 
-use function gendiff\converters\Tree\parseAst as renderTree;
-use function gendiff\converters\Plain\parseAst as renderPlain;
+use function gendiff\formatters\Tree\parseAst as renderTree;
+use function gendiff\formatters\Plain\parseAst as renderPlain;
 
-function parseAst($ast, $outputFormat)
+function renderAst($ast, $outputFormat)
 {
     switch ($outputFormat) {
         case 'plain':

@@ -19,10 +19,10 @@ DOC;
 
 function run()
 {
-    $files = \Docopt::handle(genCli());
-    $beforeFile = $files['<firstFile>'];
-    $afterFile = $files['<secondFile>'];
-    $outputFormat = $files['--format'];
+    $arguments = \Docopt::handle(genCli());
+    $beforeFile = $arguments['<firstFile>'];
+    $afterFile = $arguments['<secondFile>'];
+    $outputFormat = $arguments['--format'];
     print_r(runGenDiff($beforeFile, $afterFile, $outputFormat));
 }
 
