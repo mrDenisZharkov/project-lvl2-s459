@@ -22,5 +22,6 @@ function run()
     $files = \Docopt::handle(genCli());
     $beforeFile = $files['<firstFile>'];
     $afterFile = $files['<secondFile>'];
-    print_r(genDiff($beforeFile, $afterFile));
+    $outputFormat = $files['--format'];
+    print_r(genDiff($beforeFile, $afterFile, $outputFormat));
 }

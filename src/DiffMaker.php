@@ -3,12 +3,12 @@ namespace gendiff\DiffMaker;
 
 use function gendiff\Parser\parseFileData;
 use function gendiff\Ast\renderAst;
-use function gendiff\Ast\parseAst;
+use function gendiff\Converter\parseAst;
 
-function genDiff($beforeFile, $afterFile)
+function genDiff($beforeFile, $afterFile, $outputFormat)
 {
     $beforeData = parseFileData($beforeFile);
     $afterData = parseFileData($afterFile);
     $ast = renderAst($beforeData, $afterData);
-    return parseAst($ast);
+    return parseAst($ast, $outputFormat);
 }

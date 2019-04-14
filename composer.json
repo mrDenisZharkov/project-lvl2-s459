@@ -23,7 +23,10 @@
             "src/Cli.php",
             "src/DiffMaker.php",
             "src/Parser.php",
-            "src/Ast.php"
+            "src/Ast.php",
+            "src/Converter.php",
+            "src/converters/Tree.php",
+            "src/converters/Plain.php"
         ],
         "psr-4": {
             "gendiff\\Tests\\": "tests/"
