@@ -19,7 +19,7 @@ class DiffTest extends TestCase
                     $beforeFilePath = "{$catalogPath}/{$i}/before.{$filetype}";
                     $afterFilePath = "{$catalogPath}/{$i}/after.{$filetype}";
                     $resultFilePath = "{$catalogPath}/{$i}/result{$convertFormat}.txt";
-                    print_r("check in {$catalogPath}/{$i}   converting to {$convertFormat} format" . PHP_EOL);
+                    print_r("check in tests/cases/{$filetype}/{$convertFormat}/{$i} convert to '{$convertFormat}' format" . PHP_EOL);
                     $expected = file_get_contents($resultFilePath);
                     $tested = genDiff($beforeFilePath, $afterFilePath, $convertFormat);
                     $this->assertEquals($tested, $expected);
