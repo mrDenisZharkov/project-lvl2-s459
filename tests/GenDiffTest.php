@@ -8,7 +8,7 @@ class DiffTest extends TestCase
 {
     public function testDiff()
     {
-        $convertFormats = ['', 'plain'];
+        $convertFormats = ['pretty', 'plain', 'json'];
         foreach ($convertFormats as $convertFormat) {
             $catalogCasesPath = __DIR__ . "/cases";
             $filetypeDirectories = array_diff(scandir($catalogCasesPath), [".", ".."]);
@@ -19,7 +19,7 @@ class DiffTest extends TestCase
                     $beforeFilePath = "{$catalogPath}/{$i}/before.{$filetype}";
                     $afterFilePath = "{$catalogPath}/{$i}/after.{$filetype}";
                     $resultFilePath = "{$catalogPath}/{$i}/result{$convertFormat}.txt";
-                    print_r("check in {$catalogPath}/{$i}" . PHP_EOL);
+                    print_r("check in {$catalogPath}/{$i}   converting to {$convertFormat} format" . PHP_EOL);
                     $expected = file_get_contents($resultFilePath);
                     $tested = runGenDiff($beforeFilePath, $afterFilePath, $convertFormat);
                     $this->assertEquals($tested, $expected);

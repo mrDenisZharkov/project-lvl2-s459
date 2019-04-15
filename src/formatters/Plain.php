@@ -1,13 +1,13 @@
 <?php
 namespace gendiff\formatters\Plain;
 
-function parseAst($ast)
+function renderAst($ast)
 {
-    return parseAstBody($ast);
+    return renderAstBody($ast);
     //return $ast;
 }
 
-function parseAstBody(array $ast, $path = '')
+function renderAstBody(array $ast, $path = '')
 {
     $diffPrint = array_reduce($ast, function ($acc, $astNode) use ($path) {
         $key = $astNode['key'];
@@ -17,7 +17,7 @@ function parseAstBody(array $ast, $path = '')
         $children = $astNode['children'];
         switch ($type) {
             case 'node':
-                $acc[] = parseAstBody($children, "{$key}.");
+                $acc[] = renderAstBody($children, "{$key}.");
                 break;
             case 'changed':
                 $note = ". From '{$beforeValue}' to '{$afterValue}'";

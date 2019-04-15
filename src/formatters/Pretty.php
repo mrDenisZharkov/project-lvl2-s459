@@ -1,12 +1,12 @@
 <?php
-namespace gendiff\formatters\Tree;
+namespace gendiff\formatters\Pretty;
 
-function parseAst($ast)
+function renderAst($ast)
 {
-    return '{' . PHP_EOL . parseAstBody($ast) . '}' . PHP_EOL;
+    return '{' . PHP_EOL . renderAstBody($ast) . '}' . PHP_EOL;
 }
 
-function parseAstBody(array $ast, $spacer = '  ')
+function renderAstBody(array $ast, $spacer = '  ')
 {
     $diffPrint = array_reduce($ast, function ($acc, $astNode) use ($spacer) {
         $addedInd = '+';
@@ -22,7 +22,7 @@ function parseAstBody(array $ast, $spacer = '  ')
         switch ($type) {
             case 'node':
                 $acc[] = "{$spacer}  {$key}: {" . PHP_EOL;
-                $acc[] = parseAstBody($children, "{$spacer}    ");
+                $acc[] = renderAstBody($children, "{$spacer}    ");
                 $acc[] = "{$spacer}  }" . PHP_EOL;
                 break;
             case 'changed':

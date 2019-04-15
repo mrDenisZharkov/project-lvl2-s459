@@ -1,0 +1,30 @@
+[
+    {
+        "key": "host",
+        "type": "equal",
+        "beforeValue": "hexlet.io",
+        "afterValue": "hexlet.io",
+        "children": null
+    },
+    {
+        "key": "timeout",
+        "type": "changed",
+        "beforeValue": 50,
+        "afterValue": 20,
+        "children": null
+    },
+    {
+        "key": "proxy",
+        "type": "removed",
+        "beforeValue": "123.234.53.22",
+        "afterValue": null,
+        "children": null
+    },
+    {
+        "key": "verbose",
+        "type": "added",
+        "beforeValue": null,
+        "afterValue": "true",
+        "children": null
+    }
+]

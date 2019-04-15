@@ -1,0 +1,96 @@
+[
+    {
+        "key": "common",
+        "type": "node",
+        "beforeValue": null,
+        "afterValue": null,
+        "children": [
+            {
+                "key": "setting1",
+                "type": "equal",
+                "beforeValue": "Value 1",
+                "afterValue": "Value 1",
+                "children": null
+            },
+            {
+                "key": "setting2",
+                "type": "removed",
+                "beforeValue": "200",
+                "afterValue": null,
+                "children": null
+            },
+            {
+                "key": "setting3",
+                "type": "equal",
+                "beforeValue": "true",
+                "afterValue": "true",
+                "children": null
+            },
+            {
+                "key": "setting6",
+                "type": "removed",
+                "beforeValue": {
+                    "key": "value"
+                },
+                "afterValue": null,
+                "children": null
+            },
+            {
+                "key": "setting4",
+                "type": "added",
+                "beforeValue": null,
+                "afterValue": "blah blah",
+                "children": null
+            },
+            {
+                "key": "setting5",
+                "type": "added",
+                "beforeValue": null,
+                "afterValue": {
+                    "key5": "value5"
+                },
+                "children": null
+            }
+        ]
+    },
+    {
+        "key": "group1",
+        "type": "node",
+        "beforeValue": null,
+        "afterValue": null,
+        "children": [
+            {
+                "key": "baz",
+                "type": "changed",
+                "beforeValue": "bas",
+                "afterValue": "bars",
+                "children": null
+            },
+            {
+                "key": "foo",
+                "type": "equal",
+                "beforeValue": "bar",
+                "afterValue": "bar",
+                "children": null
+            }
+        ]
+    },
+    {
+        "key": "group2",
+        "type": "removed",
+        "beforeValue": {
+            "abc": "12345"
+        },
+        "afterValue": null,
+        "children": null
+    },
+    {
+        "key": "group3",
+        "type": "added",
+        "beforeValue": null,
+        "afterValue": {
+            "fee": "100500"
+        },
+        "children": null
+    }
+]

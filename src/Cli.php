@@ -22,7 +22,7 @@ function run()
     $arguments = \Docopt::handle(genCli());
     $beforeFile = $arguments['<firstFile>'];
     $afterFile = $arguments['<secondFile>'];
-    $outputFormat = $arguments['--format'];
+    $outputFormat = $arguments['--format'] ?? 'pretty';
     print_r(runGenDiff($beforeFile, $afterFile, $outputFormat));
 }
 

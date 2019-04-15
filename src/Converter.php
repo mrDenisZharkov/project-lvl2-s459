@@ -1,17 +1,20 @@
 <?php
 namespace gendiff\Converter;
 
-use function gendiff\formatters\Tree\parseAst as renderTree;
-use function gendiff\formatters\Plain\parseAst as renderPlain;
+use function gendiff\formatters\Pretty\renderAst as renderPretty;
+use function gendiff\formatters\Plain\renderAst as renderPlain;
+use function gendiff\formatters\Json\renderAst as renderJson;
 
 function renderAst($ast, $outputFormat)
 {
     switch ($outputFormat) {
         case 'plain':
             return renderPlain($ast);
-        break;
+        case 'pretty':
+            return renderPretty($ast);
+        case 'json':
+            return renderJson($ast);
         default:
-            return renderTree($ast);
-        break;
+            throw new \Exception("Error. Undefined output format");
     }
 }
