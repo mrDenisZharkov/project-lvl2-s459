@@ -1,6 +1,5 @@
 # Generate Differencies
 [![Maintainability](https://api.codeclimate.com/v1/badges/49a1d649aefedaa378c1/maintainability)](https://codeclimate.com/github/mrDenisZharkov/project-lvl2-s459/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/49a1d649aefedaa378c1/test_coverage)](https://codeclimate.com/github/mrDenisZharkov/project-lvl2-s459/test_coverage)
 [![Build Status](https://travis-ci.org/mrDenisZharkov/project-lvl2-s459.svg?branch=master)](https://travis-ci.org/mrDenisZharkov/project-lvl2-s459)
 ## Description:
 This package helps to find differences in files
@@ -37,3 +36,8 @@ gendiff *.json *.json
 gendiff *.(json/yaml) *.(json/yaml) --format plain
 ```
 [![asciicast](https://asciinema.org/a/yuE6f4igqf9HGhawdLYGGPgHz.svg)](https://asciinema.org/a/yuE6f4igqf9HGhawdLYGGPgHz)
+## Call files to see difference in json format:
+```
+gendiff *.(json/yaml) *.(json/yaml) --format json
+```
+[![asciicast](https://asciinema.org/a/GsXockAMTryNmj1UsjZTPp6g9.svg)](https://asciinema.org/a/GsXockAMTryNmj1UsjZTPp6g9)
