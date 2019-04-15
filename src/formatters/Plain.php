@@ -14,10 +14,9 @@ function renderAstBody(array $ast, $path = '')
         $beforeValue = $astNode['beforeValue'];
         $afterValue = $astNode['afterValue'];
         $type = $astNode['type'];
-        $children = $astNode['children'];
         switch ($type) {
             case 'node':
-                $acc[] = renderAstBody($children, "{$key}.");
+                $acc[] = renderAstBody($astNode['children'], "{$key}.");
                 break;
             case 'changed':
                 $note = ". From '{$beforeValue}' to '{$afterValue}'";
