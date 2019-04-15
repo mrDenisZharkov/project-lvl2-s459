@@ -1,7 +1,7 @@
 <?php
 namespace gendiff\Tests;
 
-use function gendiff\Cli\runGenDiff;
+use function gendiff\DiffMaker\genDiff;
 use PHPUnit\Framework\TestCase;
 
 class DiffTest extends TestCase
@@ -21,7 +21,7 @@ class DiffTest extends TestCase
                     $resultFilePath = "{$catalogPath}/{$i}/result{$convertFormat}.txt";
                     print_r("check in {$catalogPath}/{$i}   converting to {$convertFormat} format" . PHP_EOL);
                     $expected = file_get_contents($resultFilePath);
-                    $tested = runGenDiff($beforeFilePath, $afterFilePath, $convertFormat);
+                    $tested = genDiff($beforeFilePath, $afterFilePath, $convertFormat);
                     $this->assertEquals($tested, $expected);
                 }
             }

@@ -5,10 +5,22 @@ use function gendiff\Parser\parseFileData;
 use function gendiff\Ast\parseAst;
 use function gendiff\Converter\renderAst;
 
-function genDiff($beforeDataFile, $afterDataFile, $inputFormat, $outputFormat)
+function genDiff($beforeFilePath, $afterFilePath, $outputFormat)
 {
-    $beforeParsedData = parseFileData($beforeDataFile, $inputFormat);
-    $afterParsedData = parseFileData($afterDataFile, $inputFormat);
+    $beforeFileData = file_get_contents($beforeFilePath);
+    $afterFileData = file_get_contents($afterFilePath);
+    
+    $beforeFileExtension = pathinfo($beforeFilePath, PATHINFO_EXTENSION);
+    $afterFileExtension = pathinfo($afterFilePath, PATHINFO_EXTENSION);
+    
+    if ($beforeFileExtension === $afterFileExtension) {
+        $inputFormat = $beforeFileExtension;
+    } else {
+        throw new \Exception("Error. Different files format");
+    }
+    
+    $beforeParsedData = parseFileData($beforeFileData, $inputFormat);
+    $afterParsedData = parseFileData($afterFileData, $inputFormat);
     $ast = parseAst($beforeParsedData, $afterParsedData);
     return renderAst($ast, $outputFormat);
 }
