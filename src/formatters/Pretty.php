@@ -17,12 +17,11 @@ function renderAstBody(array $ast, $spacer = '  ')
         $beforeValue = $astNode['beforeValue'];
         $afterValue = $astNode['afterValue'];
         $type = $astNode['type'];
-        $children = $astNode['children'];
         
         switch ($type) {
             case 'node':
                 $acc[] = "{$spacer}  {$key}: {" . PHP_EOL;
-                $acc[] = renderAstBody($children, "{$spacer}    ");
+                $acc[] = renderAstBody($astNode['children'], "{$spacer}    ");
                 $acc[] = "{$spacer}  }" . PHP_EOL;
                 break;
             case 'changed':
