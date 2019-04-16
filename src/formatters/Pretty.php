@@ -4,6 +4,7 @@ namespace gendiff\formatters\Pretty;
 function renderAst($ast)
 {
     return '{' . PHP_EOL . renderAstBody($ast) . '}' . PHP_EOL;
+    //return $ast;
 }
 
 function renderAstBody(array $ast, $spacer = '  ')
