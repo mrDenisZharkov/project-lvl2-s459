@@ -7,9 +7,9 @@ function renderAst($ast)
     //return $ast;
 }
 
-function renderAstBody(array $ast, $spacer = '  ')
+function renderAstBody(array $ast, $nodeLevel = 0)
 {
-    $diffPrint = array_reduce($ast, function ($acc, $astNode) use ($spacer) {
+    $diffPrint = array_reduce($ast, function ($acc, $astNode) use ($nodeLevel) {
         $addedInd = '+';
         $removedInd = '-';
         $equalInd = ' ';
@@ -18,11 +18,12 @@ function renderAstBody(array $ast, $spacer = '  ')
         $beforeValue = $astNode['beforeValue'];
         $afterValue = $astNode['afterValue'];
         $type = $astNode['type'];
+        $spacer = '  ' . str_repeat('    ', $nodeLevel);
         
         switch ($type) {
             case 'node':
                 $acc[] = "{$spacer}  {$key}: {" . PHP_EOL;
-                $acc[] = renderAstBody($astNode['children'], "{$spacer}    ");
+                $acc[] = renderAstBody($astNode['children'], $nodeLevel + 1);
                 $acc[] = "{$spacer}  }" . PHP_EOL;
                 break;
             case 'changed':
@@ -55,11 +56,9 @@ function getLine($indicator, $key, $value, $spacer)
 
 function convArrayStr($array, $spacer) : string
 {
-    $convertedArray = ['{', PHP_EOL];
     $currSpacer = "{$spacer}  ";
-    foreach ($array as $key => $value) {
-        $convertedArray[] =  "{$currSpacer}    {$key}: {$value}" . PHP_EOL;
-    }
-    $convertedArray[] = "{$currSpacer}}";
-    return implode($convertedArray);
+    $convertedArray = array_map(function ($key, $value) use ($currSpacer) {
+        return "{$currSpacer}    {$key}: {$value}" . PHP_EOL;
+    }, array_keys($array), $array);
+    return ('{' . PHP_EOL . implode($convertedArray) . $currSpacer . '}');
 }
